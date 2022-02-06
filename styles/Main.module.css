@@ -1,0 +1,155 @@
+.container{
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.leftLayer{
+  width: 5vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #79FF97;
+  display: flex;
+}
+
+.rightLayer{
+  width: 5vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #79FF97;
+  display: block;
+}
+
+.rightLayer:hover{
+  width:40vw;
+  animation-duration: 1s;
+  animation-name: slide_in;
+}
+
+.rightLayer .rankBlock{
+  width:0vw;
+}
+
+.rightLayer:hover .rankBlock{
+  width: 28vw;
+  height: 10vh;
+  background-color: black;
+  border: 1px solid black;
+  display: block;
+  margin: 1vh;
+}
+
+.rightLayer .rankBlock .nameText{
+  font-size: 0vw;
+}
+
+.rightLayer:hover .rankBlock .nameText{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 3vh;
+  color: white;
+  margin: 0px;
+  text-align: center;
+  line-height: 5.5vh;
+}
+
+.rightLayer .rankBlock .chainText{
+  font-size: 0vw;
+}
+
+.rightLayer:hover .rankBlock .chainText{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 4vh;
+  color: red;
+  margin: 0px;
+  text-align: center;
+}
+
+.leftLayer:hover{
+  width:40vw;
+  animation-duration: 1s;
+  animation-name: slide_in;
+}
+
+@keyframes slide_in {
+  from {
+    width:5vw;
+  }
+
+  to {
+    width:40vw;
+  }
+}
+
+.body {
+  width: 90vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  display: block;
+}
+
+.title  {
+  /* 눈치보며 끝말잇기.io */
+  font-family:Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 8vw;
+  line-height: 20vh;
+  color: #94FF28;
+  text-shadow: 10px 10px 20px rgba(148, 255, 40, 0.49);
+  backdrop-filter: blur(5px);
+  text-align:center;
+  margin-top: 7vh;
+}
+
+.centerStyle{
+  display:flex;
+  justify-content:center;
+}
+
+.sideText{
+  width: 5vw;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 5vw;
+  color: #000000;
+  text-align: center;
+  margin: 0;
+}
+
+.nameInput{
+  width: 50vw;
+  height: 12vh;
+  background: black;
+  border: 6px solid #94FF28;
+  box-sizing: border-box;
+  box-shadow: 10px 10px 20px rgba(148, 255, 40, 0.49);
+  backdrop-filter: blur(5px);
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 3.5vw;
+  text-align: center;
+  color: white;
+
+  margin-top:-1vh;
+}
+
+.joinText{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 4vw;
+  color: #94FF28;
+  text-align:center;
+  margin-top: 5vh;
+}
