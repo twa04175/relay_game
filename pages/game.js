@@ -1,7 +1,9 @@
 import Head from "next/head";
 
 
-export default function Game() {
+export default function Game({data}) {
+
+
 
     return (
         <div>
@@ -20,10 +22,10 @@ export default function Game() {
                     </div>
                     <div style={gameStyles.sideContainer}>
                         <div style={gameStyles.roomContainer}>
-                            <p style={gameStyles.roomText}>ROOM1</p>
+                            <p style={gameStyles.roomText}>ROOM{data[0].rid}</p>
                         </div>
                         <div style={gameStyles.secondContainer}>
-                            <p style={gameStyles.secText}>15sec</p>
+                            <p style={gameStyles.secText}>{data[0].state == 0 ? "Ready":"sec"}</p>
                         </div>
                         <div style={gameStyles.nameContainer}>
                             <ul style={gameStyles.nameList}>
@@ -257,4 +259,18 @@ let gameStyles = {
         fontSize: "3vw",
         color: "#94FF28",
     },
+}
+
+export async function getServerSideProps({query}) {
+
+    // Fetch data from external API
+    const userRes = await fetch(`http://localhost:3005/users/join?name=`+query.name);
+    const userData = await userRes.json();
+
+    const roomRes = await fetch(`http:/localhost:3005/room/get?rid=`+userData.rid);
+    const data = await roomRes.json();
+    console.log(data);
+
+    // Pass data to the page via props
+    return {props: {data}}
 }
