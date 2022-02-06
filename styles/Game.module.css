@@ -1,0 +1,203 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: block;
+}
+
+.bodyContainer {
+    background-color: black;
+    display: flex;
+}
+
+.gameContainer {
+    width: 65vw;
+    height: 85vh;
+
+    background: black;
+    border: 0.5vw solid #94FF28;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px rgba(148, 255, 40, 0.49);
+    margin: 1vw;
+
+    display: block;
+}
+
+.block{
+    width: 62vw;
+    height: 10vh;
+    background: #7AFFAF;
+    margin: 0.9vw;
+    box-shadow: 5px 5px 5px rgba(148, 255, 40, 0.49);
+    display: flex;
+}
+
+.blockValueText{
+    width: 44vw;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 4vw;
+    color: black;
+    text-align: center;
+    align-self: center;
+}
+
+.blockChainText{
+    width:10vw;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2vw;
+    color: #FD2020;
+    text-align:right;
+    line-height: 8vh;
+}
+
+.blockNameText{
+    width: 10vw;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2vw;
+    color: gray;
+    text-align: center;
+    line-height: 5vh;
+    margin: 0.5vw;
+}
+
+.sideContainer {
+    width: 31vw;
+    height: 85vh;
+
+    display: block;
+}
+
+.roomContainer{
+    width: 31vw;
+    height: 12vh;
+
+    background: black;
+    border: 0.5vw solid #94FF28;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px rgba(148, 255, 40, 0.49);
+    margin-top: 1vw;
+}
+
+.secondContainer{
+    width: 31vw;
+    height: 30vh;
+
+    background: black;
+    border: 0.5vw solid #94FF28;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px rgba(148, 255, 40, 0.49);
+    margin-top: 1vw;
+}
+
+.nameContainer{
+    width: 31vw;
+    height: 39.5vh;
+
+    background: black;
+    border: 0.5vw solid #94FF28;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px rgba(148, 255, 40, 0.49);
+    margin-top: 1vw;
+
+    align-content:center;
+
+    display: flex;
+}
+
+.footerContainer {
+    background: black;
+    border: 0.5vw solid #94FF28;
+    box-sizing: border-box;
+    box-shadow: 10px 10px 20px rgba(148, 255, 40, 0.49);
+    backdrop-filter: blur(5px);
+    margin-left: 1vw;
+    display: flex;
+    width: 97vw;
+    height: 10vh;
+}
+
+.inputText {
+    color: white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.7vw;
+    margin-left: 1vw;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    align-self: center;
+    width: 7vw;
+}
+
+.textInput {
+    width: 80vw;
+    background: black;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.6vw;
+    text-align: left;
+    color: white;
+    border: none;
+    margin-left: 1vw;
+}
+
+.enterText {
+    width: 10vw;
+    color: gray;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.6vw;
+    margin-right: 1vw;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    align-self: center;
+    text-align: right;
+}
+
+.roomText{
+    margin: 0;
+    padding: 0;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 3vw;
+    color: #94FF28;
+
+    text-align:center;
+    align-self:center;
+    line-height: 11vh;
+}
+
+.secText{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 6vw;
+    color: #BBFFC2;
+
+    text-align:center;
+    align-self:center;
+    line-height: 6vh;
+}
+
+.nameList{
+    width: 12vw;
+    margin-left: 1vw;
+}
+
+.nameText{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 3vw;
+    color: #94FF28;
+}
