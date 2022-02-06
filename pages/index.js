@@ -1,122 +1,72 @@
 import Head from 'next/head'
+import homeStyles from '../styles/Main.module.css'
+import Link from "next/link";
+import {useState} from "react";
+import {useRouter} from 'next/router'
 
-export default function Home() {
+export default function Home({data}) {
 
+    let [name, setName] = useState("guest");
+    let router = useRouter();
+    let rankList = [];
 
-
-  return (
-    <div style={homeStyles.container}>
-      <Head>
-        <title>눈치보며 끝말잇기</title>
-        <meta name="description" content="nextGame" />
-      </Head>
-        <div style={homeStyles.leftLayer}>
-            <p style={homeStyles.sideText}>L</p>
-        </div>
-        <div style={homeStyles.body}>
-            <div>
-                <p style={homeStyles.title}>눈치보며<br/>끝말잇기.io</p>
+    //dataLogic
+    for(let i = 0; i<7; i++){
+        rankList.push(
+            <div className={homeStyles.rankBlock}>
+                <p className={homeStyles.nameText}>{data[i].rank}th {data[i].nickname}</p>
+                <p className={homeStyles.chainText}>{data[i].max_combo}Chain</p>
             </div>
-                <input style={homeStyles.nameInput} type ="text" placeholder={"nickname"}/>
-            <h1 style={homeStyles.joinText}>입장</h1>
+        )
+    }
+
+    //event
+    let handleChange = (e) => {
+        name = setName(e.target.value);
+    };
+    let join = (e) => {
+        if (e.code == "Enter") {
+            router.push("/game?name=" + name).then(r => console.log(r));
+        }
+    }
+
+    return (
+        <div className={homeStyles.container}>
+            <Head>
+                <title>눈치보며 끝말잇기</title>
+                <meta name="description" content="nextGame"/>
+            </Head>
+            <div className={homeStyles.leftLayer}>
+                <p className={homeStyles.sideText}>L</p>
+            </div>
+            <div className={homeStyles.body}>
+                <div>
+                    <p className={homeStyles.title}>눈치보며<br/>끝말잇기.io</p>
+                </div>
+                <div className={homeStyles.centerStyle}>
+                    <input className={homeStyles.nameInput} type="text" placeholder={"nickname"} onChange={handleChange}
+                           onKeyDown={join}/>
+                </div>
+                <p className={homeStyles.joinText}>
+                    <Link href={{
+                        pathname: '/game',
+                        query: {name: name},
+                    }}><p>입장</p></Link>
+                </p>
+            </div>
+            <div className={homeStyles.rightLayer}>
+                <p className={homeStyles.sideText}>R</p>
+                {rankList}
+            </div>
         </div>
-        <div style={homeStyles.rightLayer}>
-            <p style={homeStyles.sideText}>R</p>
-        </div>
-    </div>
-  )
+    )
 }
 
-let leftWidth = 5;
-let rightWidth = 5;
-let mainWidth = 90;
+export async function getServerSideProps() {
+    // Fetch data from external API
+    const res = await fetch(`http://localhost:3005/ranking/get`);
+    const data = await res.json();
 
-let homeStyles = {
-    container:{
-        margin: 0,
-        padding: 0,
-        display: "flex",
-    },
-
-    leftLayer:{
-        width: leftWidth+"vw",
-        height: "100vh",
-        margin: 0,
-        padding: 0,
-        background: "#79FF97",
-        display: "flex",
-    },
-
-    rightLayer:{
-        width: rightWidth+"vw",
-        height: "100vh",
-        margin: 0,
-        padding: 0,
-        background: "#79FF97",
-        display: "flex",
-    },
-
-    body : {
-        width: mainWidth+"vw",
-        height: "100vh",
-        margin: "0%",
-        padding: "0%",
-        backgroundColor: "black",
-        display: "block",
-    },
-
-    title : {
-        /* 눈치보며 끝말잇기.io */
-        fontFamily:"Roboto",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "8vw",
-        lineHeight: "20vh",
-        color: "#94FF28",
-        textShadow: "10px 10px 20px rgba(148, 255, 40, 0.49)",
-        backdropFilter: "blur(5px)",
-        textAlign:"center",
-        marginTop: "7vh",
-    },
-
-    sideText:{
-        width: "5vw",
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "5vw",
-        color: "#000000",
-        textAlign: "center",
-        margin: 0,
-    },
-
-    nameInput:{
-        width: "50vw",
-        height: "12vh",
-        background: "black",
-        border: "6px solid #94FF28",
-        boxSizing: "border-box",
-        boxShadow: "10px 10px 20px rgba(148, 255, 40, 0.49)",
-        backdropFilter: "blur(5px)",
-
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "3.5vw",
-        textAlign: "center",
-        color: "white",
-
-        marginTop:"-1vh",
-        marginLeft: "20vw",
-    },
-
-    joinText:{
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: "4vw",
-        color: "#94FF28",
-        textAlign:"center",
-        marginTop: "5vh",
-    }
+    // Pass data to the page via props
+    return {props: {data}}
 }
