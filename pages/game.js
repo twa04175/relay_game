@@ -1,11 +1,26 @@
 import Head from "next/head";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import gameStyles from "../styles/Game.module.css";
 
 
 export default function Game({data}) {
 
-    let [users, SetUsers] = useState([{name:"", state:0}]);
+    let [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3005/users/get?uid=%2272,45,65,55%22")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setUsers(result);
+                },
+                (error) => {
+
+                }
+            )
+    }, [])
+
+    console.log(users);
 
     return (
         <div>
